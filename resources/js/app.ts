@@ -1,6 +1,7 @@
 import { createApp, h } from 'vue'
-import {createPinia, } from 'pinia'
 import { createInertiaApp } from '@inertiajs/vue3'
+import {createPinia, } from 'pinia'
+
 
 import DefaultLayout from './Layouts/DefaultLayout.vue'
 

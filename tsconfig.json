@@ -1,6 +1,7 @@
 {
   "extends": "adonis-preset-ts/tsconfig.json",
   "include": [
+    "resources/js/app.ts",
     "**/*"
   ],
   "exclude": [
@@ -9,6 +10,10 @@
   ],
   "compilerOptions": {
 
+    "esModuleInterop": true,
+    "noImplicitThis": false,
+    "allowJs": true,
+    "strict": false,
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,

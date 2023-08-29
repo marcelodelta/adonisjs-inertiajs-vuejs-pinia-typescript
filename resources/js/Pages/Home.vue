@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { useCounterStore } from '../counter'
+import { useCounterStore } from '../Stores/counter'
+
 const store = useCounterStore()
-console.log(store.state)
+console.log(store)
 
 </script>
 
