@@ -21,12 +21,5 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async ({ inertia }) => {
-  return inertia.render('HomePage')
-})
-
-Route.get('/register', async ({ inertia }) => {
-  return inertia.render('Auth/Register')
-})
-Route.get('/register/step-1', async ({ inertia }) => {
-  return inertia.render('Auth/Register/Step1')
+  return inertia.render('Home')
 })

@@ -8,6 +8,7 @@
     "build"
   ],
   "compilerOptions": {
+
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
@@ -33,6 +34,7 @@
       "@adonisjs/shield",
       "@japa/preset-adonis/build/adonis-typings",
       "@eidellev/inertia-adonisjs"
-    ]
+    ],
+    "noUnusedParameters": false
   }
 }

@@ -1,6 +1,6 @@
 const { join } = require('path')
 const Encore = require('@symfony/webpack-encore')
-
+const webpack = require('webpack')
 /*
 |--------------------------------------------------------------------------
 | Encore runtime environment
@@ -9,7 +9,10 @@ const Encore = require('@symfony/webpack-encore')
 if (!Encore.isRuntimeEnvironmentConfigured()) {
   Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev')
 }
-
+Encore.addPlugin(new webpack.DefinePlugin({
+  __VUE_OPTIONS_API__: true,
+  __VUE_PROD_DEVTOOLS__: true
+}))
 /*
 |--------------------------------------------------------------------------
 | Output path
@@ -45,7 +48,7 @@ Encore.setPublicPath('/assets')
 | entrypoints.
 |
 */
-Encore.addEntry('app', './resources/js/app.js')
+Encore.addEntry('app', './resources/js/app.ts')
 
 /*
 |--------------------------------------------------------------------------
@@ -156,10 +159,9 @@ Encore.configureDevServerOptions((options) => {
 | favorite CSS precompiler
 |
 */
-Encore.enableSassLoader()
+// Encore.enableSassLoader()
 // Encore.enableLessLoader()
 // Encore.enableStylusLoader()
-
 /*
 |--------------------------------------------------------------------------
 | CSS loaders
@@ -186,14 +188,7 @@ Encore.enableVueLoader(() => {}, {
   runtimeCompilerBuild: false,
   useJsx: false
 })
-
-.addLoader({
-  test: /\.tsx?$/,
-  loader: 'ts-loader',
-  options: {
-    appendTsSuffixTo: [/\.vue$/],
-  }
-})
+Encore.enableTypeScriptLoader()
 /*
 |--------------------------------------------------------------------------
 | Configure logging
@@ -204,12 +199,12 @@ Encore.enableVueLoader(() => {}, {
 | the level to "info".
 |
 */
+
 const config = Encore.getWebpackConfig()
 config.infrastructureLogging = {
   level: 'warn',
 }
 config.stats = 'errors-warnings'
-
 
 /*
 |--------------------------------------------------------------------------
